@@ -2,7 +2,6 @@ import React from 'react';
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import {useRef} from "react";
-import {useMediaQuery} from "react-responsive";
 
 const Entry = () => {
     const videoRef = useRef();
@@ -13,7 +12,7 @@ const Entry = () => {
 
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: 'video',
+                trigger: '#video',
                 start: "bottom bottom",   // bottom of video hits bottom of viewport
                 end: "center center",     // middle of video aligns with middle of viewport
                 scrub: true,
@@ -31,7 +30,7 @@ const Entry = () => {
     })
 
     return (
-        <div className={"video w-90 mx-auto"}>
+        <div id='video' className="w-3/4 max-w-[80vw] mx-auto">
             <video
                 ref={videoRef}
                 src={'assets/video/envelope.mp4'}

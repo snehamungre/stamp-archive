@@ -9,7 +9,9 @@ const App = () => {
     return (
         <main>
             <Navbar/>
+            <div className={"h-dvh bg-white-100"}></div>
             <Entry/>
+            <div className={"h-dvh bg-white-100"}></div>
         </main>
         // <div>
         //     App
