@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Montserrat:wght@100..900&family=Rozha+One&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+    --color-white-100: #F3F1F0;
+    --font-sans: "Montserrat" , sans-serif;
+    --font-serif: "Eczar", serif;
+    --font-roza: "Rozha One", serif;
+}
+
+html, body {
+    width: 100%;
+    background-color: #F3F1F0;
+    color: #4A4037;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+
+@layer components {
+    main {
+        @apply w-full overflow-x-hidden;
+    }
+
+    nav{
+        @apply fixed z-50 w-full;
+
+        div {
+            /*@apply container mx-auto px-5 lg:px-0 py-5*/
+            /*flex flex-col md:flex-row items-center justify-between gap-5;*/
+            @apply container mx-auto px-5 lg:px-0 py-5
+            flex flex-col items-center gap-5;
+        }
+
+        a {
+            @apply cursor-pointer shrink-0;
+        }
+
+        img {
+            @apply w-39 md:w-45 lg:w-60;
+        }
+
+        ul {
+            @apply flex flex-col md:flex-row items-center gap-7 lg:gap-25 whitespace-nowrap text-nowrap font-roza text-xl md:text-2xl;
+        }
+
+    }
+
+
+}
