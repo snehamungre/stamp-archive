@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     useGSAP(() => {
-
         // TODO: this is not working as the scroll is not becoming translucent when content rolls underneath it
         gsap.timeline({
             scrollTrigger: {
@@ -25,6 +24,7 @@ const Navbar = () => {
             ease: "ease.in"
         });
 
+        // Navigation links animation
         gsap.from(".nav-link", {
             opacity: 0,
             duration: 1,
@@ -32,15 +32,12 @@ const Navbar = () => {
             stagger: 0.2,
             delay: 1,
         });
-
-
     }, []);
-
 
     return (
         <nav>
             <div>
-                <Link to='/create'>
+                <Link to='/'>
                     <img id='logo' src={'assets/images/logo.svg'} alt="logo" />
                 </Link>
                 <ul>

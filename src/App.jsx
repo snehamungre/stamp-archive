@@ -7,24 +7,29 @@ import Create from "./pages/Create.jsx";
 import Archive from "./pages/Archive.jsx";
 import Theme from "./pages/Theme.jsx";
 import About from "./pages/About.jsx";
+import {useState} from "react";
 
 gsap.registerPlugin(ScrollTrigger , SplitText);
 
 const App = () => {
+    const [entryDone, setEntryDone] = useState(false);
+
     return (
-        // TODO: fix this router, the Entry page shows up on all the pages, it should only show up on the home page
         <BrowserRouter>
             <Navbar />
-            <div className={"h-dvh bg-white-100"}></div>
-            <Entry/>
-            <main className="h-dvh bg-white-100">
-                <Routes>
-                    <Route path="/create" element={<Create />} />
-                    <Route path="/archive" element={<Archive />} />
-                    <Route path="/theme" element={<Theme />} />
-                    <Route path="/about" element={<About />} />
-                </Routes>
-            </main>
+            <div className="height:h-screen bg-white-100"></div>
+            {!entryDone ? (
+                <Entry onComplete={() => setEntryDone(true)} />
+            ) : (
+                <main>
+                    <Routes>
+                        <Route path="/create" element={<Create />} />
+                        <Route path="/archive" element={<Archive />} />
+                        <Route path="/theme" element={<Theme />} />
+                        <Route path="/about" element={<About />} />
+                    </Routes>
+                </main>
+            )}
         </BrowserRouter>
     );
 };
