@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import stamps from "../data/stamps.json";
+import Card from "../components/Card";
 
 const Archive = () => {
     const [year, setYear] = useState("");
     const [country, setCountry] = useState("");
+
+    // Get unique countries from stamps data
+    const uniqueCountries = [...new Set(stamps.flatMap(stamp => stamp.countries))];
 
     const filtered = stamps.filter(stamp => {
         return (
@@ -18,10 +22,11 @@ const Archive = () => {
             <div className="flex gap-4 mb-6">
                 <select onChange={e => setCountry(e.target.value)} value={country}>
                     <option value="">All Countries</option>
-                    <option value="UAE">UAE</option>
-                    <option value="India">India</option>
-                    <option value="Oman">Oman</option>
-                    {/* populate dynamically */}
+                    {uniqueCountries.map(countryName => (
+                        <option key={countryName} value={countryName}>
+                            {countryName}
+                        </option>
+                    ))}
                 </select>
 
                 <input
@@ -33,14 +38,9 @@ const Archive = () => {
             </div>
 
             {/* Gallery */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
                 {filtered.map(stamp => (
-                    <div key={stamp.id} className="border rounded-lg shadow p-3">
-                        <img src={stamp.img} alt={stamp.collection} className="w-full rounded" />
-                        <h3 className="font-bold mt-2">{stamp.collection}</h3>
-                        <p className="text-sm">{stamp.countries.join(", ")} — {stamp.year}</p>
-                        <p className="text-xs mt-1">{stamp.info}</p>
-                    </div>
+                    <Card key={stamp.id} stamp={stamp} />
                 ))}
             </div>
         </div>

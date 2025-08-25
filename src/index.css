@@ -51,5 +51,29 @@ html, body {
 
     }
 
+        /* Card component styles */
+        .stamp-card {
+            @apply relative w-[443px] h-[462px] shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+    
+        .stamp-card img {
+            @apply w-full h-full object-cover rounded;
+        }
+    
+        .stamp-card .collection-title {
+            @apply text-lg font-semibold text-gray-800 leading-tight;
+        }
+    
+        .stamp-card .stamp-info {
+            @apply text-sm font-medium text-gray-700;
+        }
+    
+        .stamp-card .stamp-description {
+            @apply text-sm text-gray-600 leading-tight;
+        }
+    
+        .stamp-card .stamp-id {
+            @apply text-xs text-gray-500;
+        }
 
 }

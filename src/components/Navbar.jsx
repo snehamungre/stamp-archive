@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     useGSAP(() => {
-        // TODO: this is not working as the scroll is not becoming translucent when content rolls underneath it
         gsap.timeline({
             scrollTrigger: {
                 trigger: "main",
