@@ -4,6 +4,11 @@
 
 @theme {
     --color-white-100: #F3F1F0;
+    --color-tan-100: #EDDDCE;
+    --color-pink-100: #D47DA0;
+    --color-yellow-100: #F0C864;
+    --color-green-100: #787D32;
+    --color-brown-100: #4A4037;
     --font-sans: "Montserrat" , sans-serif;
     --font-serif: "Eczar", serif;
     --font-roza: "Rozha One", serif;
@@ -11,8 +16,8 @@
 
 html, body {
     width: 100%;
-    background-color: #F3F1F0;
-    color: #4A4037;
+    background-color: var(--color-white-100);
+        color: var(--color-brown-100);
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
@@ -29,12 +34,11 @@ html, body {
         div {
             /*@apply container mx-auto px-5 lg:px-0 py-5*/
             /*flex flex-col md:flex-row items-center justify-between gap-5;*/
-            @apply container mx-auto px-5 lg:px-0 py-5
-            flex flex-col items-center gap-5;
+            @apply container mx-auto px-5 lg:px-0 py-5 flex flex-col items-center gap-5;
         }
 
-        a {
-            @apply cursor-pointer shrink-0;
+                Link {
+                    @apply cursor-pointer shrink-0 hover:text-pink-100 transition-colors;
         }
 
         img {
