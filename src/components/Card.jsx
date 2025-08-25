@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Archive = () => {
+const Card = () => {
     return (
         <div>
-            Archive
+
         </div>
     );
 };
 
-export default Archive;
+export default Card;

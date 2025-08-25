@@ -13,7 +13,7 @@ const navLinks = [
     },
     {
         id: "about",
-        title: "About / परिप्रेक्ष्य",
+        title: "About Us / परिप्रेक्ष्य",
     },
 ];
 

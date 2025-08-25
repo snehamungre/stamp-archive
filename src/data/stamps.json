@@ -1,0 +1,18 @@
+[
+  {
+    "id": "stamp-001",
+    "img": "/assets/stamps/ind-mex-1.png",
+    "countries": ["India", "Mexico"],
+    "year": 2010,
+    "collection": "India Mexico Joint Issue – 2010 (Indian Miniature Sheets)",
+    "info": "Issued to commemorate regional cooperation."
+  },
+  {
+    "id": "stamp-002",
+    "img": "/assets/stamps/ind-mex-2.png",
+    "countries": ["India", "Mexico"],
+    "year": 2010,
+    "collection": "India Mexico Joint Issue – 2010 (Indian Miniature Sheets)",
+    "info": "Celebrating 1st Republic Day of India."
+  }
+]

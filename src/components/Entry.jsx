@@ -9,7 +9,6 @@ const Entry = () => {
     useGSAP(() => {
 
         // this is for the video animation
-
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#video',
