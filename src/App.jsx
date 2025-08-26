@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import gsap from "gsap";
 import {ScrollTrigger, SplitText} from "gsap/all";
 import Navbar from "./components/Navbar.jsx";
@@ -17,12 +17,14 @@ const App = () => {
     return (
         <BrowserRouter>
             <Navbar />
-            <div className="height:h-screen bg-white-100"></div>
             {!entryDone ? (
-                <Entry onComplete={() => setEntryDone(true)} />
+                <main>
+                    <Entry onComplete={() => setEntryDone(true)} />
+                </main>
             ) : (
                 <main>
                     <Routes>
+                        <Route path="/" element={<Navigate to="/create" replace />} />
                         <Route path="/create" element={<Create />} />
                         <Route path="/archive" element={<Archive />} />
                         <Route path="/theme" element={<Theme />} />
@@ -30,6 +32,7 @@ const App = () => {
                     </Routes>
                 </main>
             )}
+            
         </BrowserRouter>
     );
 };

@@ -7,14 +7,14 @@ const Navbar = () => {
     useGSAP(() => {
         gsap.timeline({
             scrollTrigger: {
-                trigger: "main",
+                trigger: "nav",
                 start: "top top",
                 end: "+=200",
                 scrub: true,
             }
         }).fromTo("nav",
             { backgroundColor: "transparent" },
-            { backgroundColor: "rgba(243, 241, 240, 0.5)", backgroundFilter: "blur(20px)", duration: 1 }
+            { backgroundColor: "rgba(243, 241, 240, 0.5)",duration: 1 }
         );
 
         gsap.from("#logo", {

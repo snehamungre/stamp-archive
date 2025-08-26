@@ -6,6 +6,7 @@ const Entry = ({ onComplete }) => {
     const videoRef = useRef();
 
     useGSAP(() => {
+        
         // Instruction text animation
         gsap.fromTo(
             "#scroll-instruction",
@@ -21,6 +22,7 @@ const Entry = ({ onComplete }) => {
                 end: "center center",
                 scrub: true,
                 pin: true,
+                markers:true,
                 onLeave: () => {
                     // when scroll animation is finished
                     if (onComplete) onComplete();
@@ -36,15 +38,16 @@ const Entry = ({ onComplete }) => {
     }, [onComplete]);
 
     return (
-        <div className="min-h-screen bg-white-100 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center w-full">
+            <div className="h-dvh bg-sky-800"></div>
             {/* Instruction Text */}
             <p
                 id="scroll-instruction"
-                className="text-lg text-gray-600 mb-6 font-medium tracking-wide"
+                className="text-lg text-yellow-100 mb-6 font-medium tracking-wide"
             >
                 Scroll slowly ↓
             </p>
-
+            
             {/* Video Section */}
             <div id="video" className="w-3/4 max-w-[80vw] mx-auto pt-10">
                 <video
@@ -53,9 +56,9 @@ const Entry = ({ onComplete }) => {
                     muted
                     playsInline
                     preload="auto"
-                    className="w-full h-auto"
                 />
             </div>
+            <div className="h-dvh bg-sky-800"></div>
         </div>
     );
 };
