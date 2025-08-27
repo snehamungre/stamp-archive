@@ -15,7 +15,7 @@ const Entry = ({ onComplete }) => {
 
         gsap.timeline({
             scrollTrigger: {
-                trigger: ".intro-boxes",
+                trigger: ".intro-objects",
                 start: "top top",   // when section is 80% down viewport
                 end: "+=500",     // finish earlier
                 scrub: true,
@@ -73,7 +73,8 @@ const Entry = ({ onComplete }) => {
 
                 <p
                     id="scroll-instruction"
-                    className="absolute bottom-3 left-0 right-0 text-lg text-green-100 mb-6 font-large text-center tracking-wide font-bold animate-bounce"
+                    className="absolute bottom-3 left-0 right-0 text-lg text-green-100 mb-6 font-large
+                    text-center tracking-wide font-bold animate-bounce"
                 >
                     Scroll slowly ↓
                 </p>

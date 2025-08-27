@@ -1,50 +1,109 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Card = ({ stamp }) => {
+    const [isPortrait, setIsPortrait] = useState(false);
+    const [isLandscape, setIsLandscape] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        if (!stamp?.img) return;
+
+        const img = new Image();
+        img.src = stamp.img;
+
+        img.onload = () => {
+            setImageLoaded(true);
+            const aspectRatio = img.width / img.height;
+
+            // Determine orientation based on aspect ratio
+            if (aspectRatio > 1.2) {
+                // Landscape (width significantly greater than height)
+                setIsLandscape(true);
+                setIsPortrait(false);
+            } else if (aspectRatio < 0.8) {
+                // Portrait (height significantly greater than width)
+                setIsPortrait(true);
+                setIsLandscape(false);
+            } else {
+                // Square or near-square
+                setIsPortrait(false);
+                setIsLandscape(false);
+            }
+        };
+
+        img.onerror = () => {
+            console.error('Failed to load stamp image:', stamp.img);
+            setImageLoaded(true); // Still set loaded to true to avoid infinite loading
+        };
+    }, [stamp]);
+
     if (!stamp) return null;
 
     return (
-        <div className="relative w-[443px] h-[462px]">
+        <div className="relative w-80 mx-auto">
             {/* SVG Background */}
-            <img 
-                src="/assets/images/content-card.svg" 
+            <img
+                src="/assets/images/content-card.svg"
                 alt="Card background"
-                className="absolute inset-0 w-1/2 h-auto"
+                className="w-full h-auto block"
             />
 
-            {/* Stamp Image - positioned in the red area */}
-            <div className="absolute top-[86px] left-[131px] w-[177px] h-[168px] flex items-center justify-center">
-                <img 
-                    src={stamp.img} 
-                    alt={`Stamp from ${stamp.countries.join(' and ')}`}
-                    className="w-full h-full object-cover rounded"
+            {/* Stamp Image Container */}
+            <div
+                className={`absolute transform top-25  -translate-x-1/2 -translate-y-1/2
+                            flex items-center justify-center
+                            ${isLandscape ? 'right-0 w-30 h-auto' : isPortrait ? 'w-auto h-30 right-5' : 'right-2 w-30 h-30'}`}>
+                {!imageLoaded && (
+                    <div className="w-full h-full bg-gray-200 animate-pulse rounded flex items-center justify-center">
+                        <span className="text-xs text-gray-500">Loading...</span>
+                    </div>
+                )}
+
+                <img
+                    src={stamp.img}
+                    alt={stamp.id}
+                    className={`w-full h-full object-contain transition-opacity duration-300
+                     ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    onLoad={() => setImageLoaded(true)}
+                    onError={(e) => {
+                        console.error('Failed to load image:', stamp.img);
+                        e.target.style.display = 'none';
+                    }}
+                    style={{
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        objectFit: isLandscape ? 'cover' : isPortrait ? 'cover' : 'contain'
+                    }}
                 />
             </div>
 
-            {/* Collection Name - positioned above the lines */}
-            <div className="absolute top-[200px] left-[50px] right-[50px] text-center">
-                <h3 className="text-lg font-semibold text-gray-800 leading-tight">
+
+            {/* Collection Name */}
+            <div className="absolute top-41 left-10 right-10 w-50 text-center">
+                <h3 className="text-s font-serif text-gray-800 leading-tight line-clamp-2">
                     {stamp.collection}
                 </h3>
             </div>
 
-            {/* Countries - positioned on the first line */}
-            <div className="absolute top-[260px] left-[50px] right-[50px] text-center">
-                <p className="text-sm font-medium text-gray-700">
-                    Countries: {stamp.countries.join(' & ')}
-                </p>
-            </div>
-
-            {/* Year - positioned on the second line */}
-            <div className="absolute top-[294px] left-[50px] right-[50px] text-center">
-                <p className="text-sm font-medium text-gray-700">
+            {/* Year */}
+            <div className="absolute top-47 left-10 right-18 text-center">
+                <p className="text-sm font-sans text-pink-100 weight-black-100">
                     Year: {stamp.year}
                 </p>
             </div>
 
-            {/* Additional Info - positioned on the third line */}
-            <div className="absolute top-[328px] left-[50px] right-[50px] text-center">
-                <p className="text-sm text-gray-600 leading-tight">
+            {/* Countries */}
+            <div className="absolute top-54 left-9  text-center">
+                <p className="text-xs font-sans text-brown-100">
+                    Countries: {stamp.countries.join(' , ')}
+                </p>
+            </div>
+
+
+
+            {/* Additional Info */}
+            <div className="absolute top-60 w-60 left-7 right-10 text-center">
+                <p className="text-xs text-brown-100 leading-tight line-clamp-3">
                     {stamp.info}
                 </p>
             </div>

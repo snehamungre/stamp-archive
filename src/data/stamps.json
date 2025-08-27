@@ -4,7 +4,7 @@
     "img": "/assets/stamps/ind-mex-1.png",
     "countries": ["India", "Mexico"],
     "year": 2010,
-    "collection": "India Mexico Joint Issue – 2010 (Indian Miniature Sheets)",
+    "collection": "India Mexico Joint Issue",
     "info": "Issued to commemorate regional cooperation."
   },
   {
@@ -12,31 +12,23 @@
     "img": "/assets/stamps/ind-mex-2.png",
     "countries": ["India", "Mexico"],
     "year": 2010,
-    "collection": "India Mexico Joint Issue – 2010 (Indian Miniature Sheets)",
+    "collection": "India Mexico Joint Issue",
     "info": "Celebrating 1st Republic Day of India."
   },
   {
     "id": "stamp-003",
-    "img": "/assets/stamps/ind-mex-1.png",
+    "img": "/assets/stamps/indian-stamp.png",
     "countries": ["India"],
     "year": 2012,
-    "collection": "Indian Heritage Series – 2012",
+    "collection": "Indian Heritage Series",
     "info": "Commemorating India's rich cultural heritage and monuments."
   },
   {
     "id": "stamp-004",
-    "img": "/assets/stamps/ind-mex-2.png",
-    "countries": ["Mexico"],
+    "img": "/assets/stamps/india-flowers.png",
+    "countries": ["India"],
     "year": 2011,
-    "collection": "Mexican Folk Art Collection – 2011",
+    "collection": "Mexican Folk Art Collection",
     "info": "Showcasing traditional Mexican folk art and crafts."
-  },
-  {
-    "id": "stamp-005",
-    "img": "/assets/stamps/ind-mex-1.png",
-    "countries": ["India", "UAE"],
-    "year": 2013,
-    "collection": "India-UAE Bilateral Issue – 2013",
-    "info": "Celebrating diplomatic relations between India and UAE."
   }
 ]

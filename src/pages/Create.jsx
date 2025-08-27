@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
+import stampsData from "../data/stamps.json";
 
 const Create = () => {
     const location = useLocation();
@@ -29,20 +30,13 @@ const Create = () => {
         );
     }, [location.pathname]);
 
-    // Available stamp images
-    const stampImages = [
-        '/assets/stamps/ind-mex-1.png',
-        '/assets/stamps/ind-mex-2.png',
-        '/assets/stamps/india-flowers.png',
-        '/assets/stamps/Indian-Stamp.png'
-    ];
-
     useEffect(() => {
-        // Randomly select 3-4 stamps
-        const shuffled = stampImages.sort(() => 0.5 - Math.random());
+        // Randomly select 3-4 full stamp objects (not just images)
+        const shuffled = [...stampsData].sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, Math.floor(Math.random() * 2) + 3);
         setStamps(selected);
     }, []);
+
 
     // Handle the start of dragging - this stores which stamp is being dragged
     const handleDragStart = (e, stampSrc) => {
@@ -68,7 +62,7 @@ const Create = () => {
     const handleDrop = (e) => {
         e.preventDefault();
         // Get the stamp source from either state or dataTransfer
-        const stampSrc = draggedStamp || e.dataTransfer.getData("text/plain");
+        const stampSrc = draggedStamp.img || e.dataTransfer.getData("text/plain");
         
         if (stampSrc && envelopeRef.current) {
             // Get the envelope's position and size
@@ -151,7 +145,7 @@ const Create = () => {
                     return (
                         <img
                             key={index}
-                            src={stamp}
+                            src={stamp.img}
                             alt={`Stamp ${index + 1}`}
                             className={`w-auto h-20 object-cover cursor-move absolute pointer-events-auto ${positions[index % positions.length]}`} // pointer-events-auto on individual stamps
                             draggable={true} // Explicitly set draggable

@@ -26,8 +26,18 @@ html, body {
     @apply flex justify-center items-center;
 }
 
+@utility nav-offset {
+    @apply mt-87 md:mt-50 lg:mt-62;
+}
+
 @utility flex-column {
     @apply flex flex-col items-center;
+}
+
+@layer pages {
+    main {
+        @apply w-full overflow-x-hidden;
+    }
 }
 
 @layer components {
@@ -36,7 +46,7 @@ html, body {
     }
 
     nav{
-        @apply fixed z-50 w-full;
+        @apply fixed top-0 left-0 z-50 w-full h-85 md:h-48 lg:h-60;
 
         div {
             /*@apply container mx-auto px-5 lg:px-0 py-5*/
@@ -58,14 +68,4 @@ html, body {
 
     }
 
-}
-/* Utilities for layout under fixed navbar */
-:root {
-    --nav-height: 96px;
-}
-
-@media (min-width: 768px) {
-    :root {
-        --nav-height: 112px;
-    }
 }
