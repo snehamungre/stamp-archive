@@ -6,12 +6,11 @@ const Entry = ({ onComplete }) => {
     const videoRef = useRef();
 
     useGSAP(() => {
-        
         // Instruction text animation
         gsap.fromTo(
             "#scroll-instruction",
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 1, delay: 0.5 }
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 1, delay: 2, ease:'power.in'}
         );
 
         // Video animation timeline
@@ -22,7 +21,7 @@ const Entry = ({ onComplete }) => {
                 end: "center center",
                 scrub: true,
                 pin: true,
-                markers:true,
+                markers:false,
                 onLeave: () => {
                     // when scroll animation is finished
                     if (onComplete) onComplete();
@@ -38,15 +37,16 @@ const Entry = ({ onComplete }) => {
     }, [onComplete]);
 
     return (
-        <div className="flex flex-col items-center w-full">
-            <div className="h-dvh bg-sky-800"></div>
-            {/* Instruction Text */}
-            <p
-                id="scroll-instruction"
-                className="text-lg text-yellow-100 mb-6 font-medium tracking-wide"
-            >
-                Scroll slowly ↓
-            </p>
+        <div className="flex-column  w-full">
+            {/* Instruction Text */}    
+            <div className="h-dvh w-full">
+                <p
+                    id="scroll-instruction"
+                    className="absolute bottom-0 w-full transform y-full text-lg text-green-100 mb-6 font-large text-center tracking-wide font-bold animate-bounce"
+                >
+                    Scroll slowly ↓
+                </p>
+            </div>
             
             {/* Video Section */}
             <div id="video" className="w-3/4 max-w-[80vw] mx-auto pt-10">
@@ -58,7 +58,8 @@ const Entry = ({ onComplete }) => {
                     preload="auto"
                 />
             </div>
-            <div className="h-dvh bg-sky-800"></div>
+            
+            <div className="h-dvh"></div>
         </div>
     );
 };

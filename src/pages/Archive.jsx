@@ -17,7 +17,7 @@ const Archive = () => {
     });
 
     return (
-        <div className="p-5">
+        <div className="flex-center">
             {/* Filters */}
             <div className="flex gap-4 mb-6">
                 <select onChange={e => setCountry(e.target.value)} value={country}>
@@ -38,7 +38,7 @@ const Archive = () => {
             </div>
 
             {/* Gallery */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filtered.map(stamp => (
                     <Card key={stamp.id} stamp={stamp} />
                 ))}

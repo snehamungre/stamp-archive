@@ -9,7 +9,7 @@ const Card = ({ stamp }) => {
             <img 
                 src="/assets/images/content-card.svg" 
                 alt="Card background"
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-1/2 h-auto"
             />
 
             {/* Stamp Image - positioned in the red area */}
@@ -46,13 +46,6 @@ const Card = ({ stamp }) => {
             <div className="absolute top-[328px] left-[50px] right-[50px] text-center">
                 <p className="text-sm text-gray-600 leading-tight">
                     {stamp.info}
-                </p>
-            </div>
-
-            {/* ID - positioned on the fourth line */}
-            <div className="absolute top-[362px] left-[50px] right-[50px] text-center">
-                <p className="text-xs text-gray-500">
-                    ID: {stamp.id}
                 </p>
             </div>
         </div>

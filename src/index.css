@@ -22,6 +22,13 @@ html, body {
     overflow-x: hidden;
 }
 
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+@utility flex-column {
+    @apply flex flex-col items-center;
+}
 
 @layer components {
     main {
@@ -46,7 +53,7 @@ html, body {
         }
 
         ul {
-            @apply flex flex-col md:flex-row items-center gap-7 lg:gap-25 whitespace-nowrap text-nowrap font-roza text-xl md:text-2xl;
+            @apply flex-center flex-col md:flex-row gap-7 lg:gap-25 whitespace-nowrap text-nowrap font-roza text-xl md:text-2xl;
         }
 
     }
