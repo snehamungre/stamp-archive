@@ -15,25 +15,27 @@ const Entry = ({ onComplete }) => {
 
         gsap.timeline({
             scrollTrigger: {
-                trigger: "#intro-boxes",
+                trigger: ".intro-boxes",
                 start: "top top",   // when section is 80% down viewport
-                end: "+=150",     // finish earlier
+                end: "+=500",     // finish earlier
                 scrub: true,
-                markers: false
+                markers: false,
+                stagger: .5
             }
         })
             .from("#left-box", { x: "-100vw", opacity: 0, duration: 1, ease: "power3.out" })
-            .from("#right-box", { x: "100vw", opacity: 0, duration: 1, ease: "power3.out" }, "<");
+            .from("#right-box", { x: "100vw", rotate:-80, opacity: 0, duration: 1, ease: "power3.out" }, "+=0.25")
+            .from("#blue-env", { x: "-100vw", rotate:-80, opacity: 0, duration: 1, ease: "circ.out" }, "+=0.25");
 
         // Video animation timeline
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#video',
                 start: "bottom bottom",
-                end: "+=1100",
+                end: "+=1000",
                 scrub: true,
                 pin: true,
-                markers:true,
+                markers:false,
                 onLeave: () => {
                     // when scroll animation is finished
                     if (onComplete) onComplete();
@@ -52,13 +54,13 @@ const Entry = ({ onComplete }) => {
         <div className="flex-column w-full relative">
             {/* Instruction Text */}    
             <div className="h-dvh w-full relative">
-                <div id="intro-boxes" className="relative h-screen pointer-events-none z-10">
+                <div className="intro-objects relative h-screen pointer-events-none z-10">
                     {/* Left box - positioned at top of viewport */}
                     <img
                         id="left-box"
                         src={'assets/images/left-box.png'}
                         alt={'left-box'}
-                        className="absolute top-50 h-90 -translate-x-14"
+                        className="absolute top-70 h-90 -translate-x-14"
                     />
                     {/* Right box - positioned at bottom of viewport */}
                     <img id="right-box"
@@ -75,10 +77,17 @@ const Entry = ({ onComplete }) => {
                 >
                     Scroll slowly ↓
                 </p>
+
+                <img id="blue-env"
+                     src={'assets/images/blue-env.svg'}
+                     alt={'right-box'}
+                     className="intro-objects left-0 w-70 rotate-30 -translate-x-30"
+                />
             </div>
+
             
             {/* Video Section */}
-            <div id="video" className="w-3/4 max-w-[80vw] mx-auto pt-10">
+            <div id="video" className="w-3/4 max-w-[80vw] mx-auto">
                 <video
                     ref={videoRef}
                     src={'/assets/video/envelope.mp4'}
