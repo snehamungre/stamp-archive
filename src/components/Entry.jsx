@@ -36,9 +36,11 @@ const Entry = ({ onComplete }) => {
                 scrub: true,
                 pin: true,
                 markers:false,
-                onLeave: () => {
-                    // when scroll animation is finished
-                    if (onComplete) onComplete();
+                onUpdate: (self) => {
+                    console.log(self.progress);
+                    if (self.progress >= 0.84) {
+                        onComplete();
+                    }
                 }
             }
         });

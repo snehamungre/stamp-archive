@@ -136,10 +136,10 @@ const Create = () => {
                 {stamps.map((stamp, index) => {
                     // Define positions for scattering stamps around the envelope
                     const positions = [
-                        "top-100 left-100 rotate-[-12deg]",
-                        "top-120 right-60 rotate-[8deg]",
                         "bottom-90 left-54 rotate-[15deg]",
-                        "bottom-85 right-35 rotate-[-18deg]"
+                        "bottom-88 right-35 rotate-[-18deg]",
+                        "bottom-20 left-30 rotate-[-12deg]",
+                        "bottom-25 right-60 rotate-[8deg]"
                     ];
                     
                     return (
