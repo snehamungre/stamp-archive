@@ -16,7 +16,7 @@ This project was built to honor a family legacy and to experiment with tactile, 
 * **Archive page**: grid of stamps with **filtering by country and year** and lazy-loaded images.
 * **Theme page**: curated stamp releases & special postcards.
 * **About page**: the story behind the archive — why it exists.
-* Data stored as JSON (easy to migrate to DB later); validation recommended (Zod/JSON Schema + Ajv).
+* Data stored as JSON (easy to migrate to DB later).
 
 ---
 ### Design
@@ -111,8 +111,7 @@ src/
     About.jsx
   data/
     stamps.json
-  styles/
-    index.css
+  index.css
   App.jsx
   main.jsx
 ```
